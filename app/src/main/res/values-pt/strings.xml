@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crypto Cash</string>
+    <string name="onboarding_title_1">Sua Carteira Cripto</string>
+    <string name="onboarding_desc_1">Compre, venda e guarde Bitcoin, Ethereum e mais — tudo em um só lugar.</string>
+    <string name="onboarding_title_2">Envie Dinheiro Instantaneamente</string>
+    <string name="onboarding_desc_2">Envie criptomoedas ou dinheiro para qualquer pessoa, em qualquer lugar, em segundos.</string>
+    <string name="onboarding_title_3">Segurança Bancária</string>
+    <string name="onboarding_desc_3">Proteja sua conta com autenticação biométrica e um PIN seguro.</string>
+    <string name="next">Próximo</string>
+    <string name="skip">Pular</string>
+    <string name="get_started">Começar</string>
+    <string name="back">Voltar</string>
+    <string name="continue_as_guest">Continuar como Convidado (Demo)</string>
+    <string name="buy">Comprar</string>
+    <string name="sell">Vender</string>
+    <string name="send_money">Enviar</string>
+    <string name="deposit">Depositar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Salvar</string>
+    <string name="total_balance">Saldo Total</string>
+    <string name="retry">Tentar Novamente</string>
+    <string name="guest_mode_banner">👋 Você está no modo demo. Registre-se para acessar todos os recursos.</string>
+    <string name="pin_create_title">Crie um PIN de 6 dígitos</string>
+    <string name="pin_enter_title">Digite seu PIN</string>
+    <string name="pin_confirm_title">Confirme seu PIN</string>
+    <string name="pin_mismatch">Os PINs não coincidem. Tente novamente.</string>
+    <string name="pin_incorrect">PIN incorreto. Tente novamente.</string>
+    <string name="payment_methods_title">Métodos de Pagamento</string>
+    <string name="add_bank_account">Adicionar Conta Bancária</string>
+    <string name="add_debit_card">Adicionar Cartão de Débito</string>
+    <string name="add_credit_card">Adicionar Cartão de Crédito</string>
+    <string name="kyc_title">Verifique sua Identidade</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_history">Histórico</string>
+    <string name="nav_wallet">Carteira</string>
+    <string name="nav_settings">Configurações</string>
+</resources>
