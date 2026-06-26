@@ -1,0 +1,132 @@
+version: 2.1
+
+orbs:
+  android: circleci/android@3.2.0
+
+# Increment to bust all caches (e.g. after a major dependency upgrade)
+x-cache-version: &cache-version "v1"
+
+# Shared executor definition — single source of truth for the image tag
+x-android-executor: &android-executor
+  name: android/android_docker
+  tag: "2025.03.1"
+
+jobs:
+  lint:
+    executor:
+      <<: *android-executor
+    resource_class: medium
+    environment:
+      GRADLE_OPTS: -Xmx2g -Dfile.encoding=UTF-8
+    steps:
+      - checkout
+      - android/restore_gradle_cache:
+          cache_prefix: *cache-version
+      - android/restore_build_cache:
+          cache_prefix: *cache-version
+      - run:
+          name: Run lint
+          command: ./gradlew lint --build-cache
+          no_output_timeout: 15m
+      - android/save_gradle_cache:
+          cache_prefix: *cache-version
+      - android/save_build_cache:
+          cache_prefix: *cache-version
+      - store_artifacts:
+          path: app/build/reports
+          destination: lint-reports
+
+  unit-test:
+    executor:
+      <<: *android-executor
+    resource_class: medium
+    environment:
+      GRADLE_OPTS: -Xmx2g -Dfile.encoding=UTF-8
+    steps:
+      - checkout
+      - android/restore_gradle_cache:
+          cache_prefix: *cache-version
+      - android/restore_build_cache:
+          cache_prefix: *cache-version
+      - run:
+          name: Run unit tests
+          command: ./gradlew testDebugUnitTest --build-cache
+          no_output_timeout: 15m
+      - android/save_gradle_cache:
+          cache_prefix: *cache-version
+      - android/save_build_cache:
+          cache_prefix: *cache-version
+      - store_test_results:
+          path: app/build/test-results
+      - store_artifacts:
+          path: app/build/reports/tests
+          destination: test-reports
+
+  build-debug:
+    executor:
+      <<: *android-executor
+    # large = 4 vCPUs / 8 GB RAM — worth it for compilation
+    resource_class: large
+    environment:
+      # Allocate most of the available heap; leave headroom for the Kotlin daemon
+      GRADLE_OPTS: -Xmx4g -Dkotlin.daemon.jvm.options="-Xmx2g" -Dfile.encoding=UTF-8
+    steps:
+      - checkout
+      - android/restore_gradle_cache:
+          cache_prefix: *cache-version
+      - android/restore_build_cache:
+          cache_prefix: *cache-version
+      - run:
+          name: Assemble debug APK
+          command: ./gradlew assembleDebug --build-cache --parallel
+          no_output_timeout: 20m
+      - android/save_gradle_cache:
+          cache_prefix: *cache-version
+      - android/save_build_cache:
+          cache_prefix: *cache-version
+      - store_artifacts:
+          path: app/build/outputs/apk/debug
+          destination: debug-apk
+
+  build-release:
+    executor:
+      <<: *android-executor
+    resource_class: large
+    environment:
+      GRADLE_OPTS: -Xmx4g -Dkotlin.daemon.jvm.options="-Xmx2g" -Dfile.encoding=UTF-8
+    steps:
+      - checkout
+      - android/restore_gradle_cache:
+          cache_prefix: *cache-version
+      - android/restore_build_cache:
+          cache_prefix: *cache-version
+      - run:
+          name: Assemble release APK
+          command: ./gradlew assembleRelease --build-cache --parallel
+          no_output_timeout: 20m
+      - android/save_gradle_cache:
+          cache_prefix: *cache-version
+      - android/save_build_cache:
+          cache_prefix: *cache-version
+      - store_artifacts:
+          path: app/build/outputs/apk/release
+          destination: release-apk
+
+workflows:
+  build-and-test:
+    jobs:
+      # lint and unit-test run in parallel, saving wall-clock time
+      - lint
+      - unit-test
+      # debug build gates on both checks passing
+      - build-debug:
+          requires:
+            - lint
+            - unit-test
+      # release build runs only on main after a successful debug build
+      - build-release:
+          requires:
+            - build-debug
+          filters:
+            branches:
+              only: main
