@@ -107,3 +107,10 @@ app/
 - Portrait and landscape
 - Notch / edge-to-edge displays
 - Dark mode
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome. If you plan to expand the project, keep documentation up to date as new features and setup steps are introduced.
+
