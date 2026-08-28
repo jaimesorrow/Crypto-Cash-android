@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.cryptocash.android.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_home_to_buy" app:destination="@id/buyFragment" />
+        <action android:id="@+id/action_home_to_sell" app:destination="@id/sellFragment" />
+        <action android:id="@+id/action_home_to_send" app:destination="@id/sendFragment" />
+        <action android:id="@+id/action_home_to_deposit" app:destination="@id/depositFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/buyFragment"
+        android:name="com.cryptocash.android.buy.BuyFragment"
+        android:label="@string/buy"
+        tools:layout="@layout/fragment_buy">
+        <action android:id="@+id/action_buy_to_confirmation" app:destination="@id/confirmationFragment" />
+        <action android:id="@+id/action_buy_to_payment_methods" app:destination="@id/paymentMethodsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sellFragment"
+        android:name="com.cryptocash.android.sell.SellFragment"
+        android:label="@string/sell"
+        tools:layout="@layout/fragment_sell">
+        <action android:id="@+id/action_sell_to_confirmation" app:destination="@id/confirmationFragment" />
+        <action android:id="@+id/action_sell_to_payment_methods" app:destination="@id/paymentMethodsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sendFragment"
+        android:name="com.cryptocash.android.send.SendFragment"
+        android:label="@string/send_money"
+        tools:layout="@layout/fragment_send">
+        <action android:id="@+id/action_send_to_confirmation" app:destination="@id/confirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.cryptocash.android.send.ConfirmationFragment"
+        android:label="@string/confirm"
+        tools:layout="@layout/fragment_confirmation">
+        <action android:id="@+id/action_confirmation_to_home" app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/depositFragment"
+        android:name="com.cryptocash.android.deposit.DepositFragment"
+        android:label="@string/deposit"
+        tools:layout="@layout/fragment_deposit">
+        <action android:id="@+id/action_deposit_to_deposit_confirm" app:destination="@id/depositConfirmFragment" />
+        <action android:id="@+id/action_deposit_to_payment_methods" app:destination="@id/paymentMethodsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/depositConfirmFragment"
+        android:name="com.cryptocash.android.deposit.DepositConfirmFragment"
+        android:label="@string/confirm_deposit"
+        tools:layout="@layout/fragment_deposit_confirm">
+        <action android:id="@+id/action_deposit_confirm_to_home" app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.cryptocash.android.history.HistoryFragment"
+        android:label="@string/nav_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/paymentMethodsFragment"
+        android:name="com.cryptocash.android.payment.PaymentMethodsFragment"
+        android:label="@string/payment_methods_title"
+        tools:layout="@layout/fragment_payment_methods" />
+
+    <fragment
+        android:id="@+id/notificationPreferencesFragment"
+        android:name="com.cryptocash.android.notifications.NotificationPreferencesFragment"
+        android:label="@string/nav_notifications"
+        tools:layout="@layout/fragment_notification_preferences" />
+
+</navigation>

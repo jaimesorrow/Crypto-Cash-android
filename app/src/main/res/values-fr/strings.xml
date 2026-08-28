@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crypto Cash</string>
+    <string name="onboarding_title_1">Votre Portefeuille Crypto</string>
+    <string name="onboarding_desc_1">Achetez, vendez et conservez Bitcoin, Ethereum et plus — tout en un seul endroit.</string>
+    <string name="onboarding_title_2">Envoyez de l\'Argent Instantanément</string>
+    <string name="onboarding_desc_2">Envoyez des cryptos ou de l\'argent à n\'importe qui, n\'importe où, en quelques secondes.</string>
+    <string name="onboarding_title_3">Sécurité Bancaire</string>
+    <string name="onboarding_desc_3">Protégez votre compte avec l\'authentification biométrique et un code PIN sécurisé.</string>
+    <string name="next">Suivant</string>
+    <string name="skip">Passer</string>
+    <string name="get_started">Commencer</string>
+    <string name="back">Retour</string>
+    <string name="continue_as_guest">Continuer en tant qu\'Invité (Démo)</string>
+    <string name="buy">Acheter</string>
+    <string name="sell">Vendre</string>
+    <string name="send_money">Envoyer</string>
+    <string name="deposit">Déposer</string>
+    <string name="confirm">Confirmer</string>
+    <string name="cancel">Annuler</string>
+    <string name="save">Enregistrer</string>
+    <string name="total_balance">Solde Total</string>
+    <string name="retry">Réessayer</string>
+    <string name="guest_mode_banner">👋 Vous êtes en mode démo. Inscrivez-vous pour accéder à toutes les fonctionnalités.</string>
+    <string name="pin_create_title">Créez un code PIN à 6 chiffres</string>
+    <string name="pin_enter_title">Entrez votre code PIN</string>
+    <string name="pin_confirm_title">Confirmez votre code PIN</string>
+    <string name="pin_mismatch">Les codes PIN ne correspondent pas. Veuillez réessayer.</string>
+    <string name="pin_incorrect">Code PIN incorrect. Veuillez réessayer.</string>
+    <string name="payment_methods_title">Moyens de Paiement</string>
+    <string name="add_bank_account">Ajouter un Compte Bancaire</string>
+    <string name="add_debit_card">Ajouter une Carte de Débit</string>
+    <string name="add_credit_card">Ajouter une Carte de Crédit</string>
+    <string name="kyc_title">Vérifiez votre Identité</string>
+    <string name="nav_home">Accueil</string>
+    <string name="nav_history">Historique</string>
+    <string name="nav_wallet">Portefeuille</string>
+    <string name="nav_settings">Paramètres</string>
+</resources>

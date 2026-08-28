@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding wallet illustration placeholder -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+  <path android:fillColor="#6750A4" android:pathData="M100,20 C55.8,20 20,55.8 20,100 C20,144.2 55.8,180 100,180 C144.2,180 180,144.2 180,100 C180,55.8 144.2,20 100,20Z"/>
+  <path android:fillColor="#FFFFFF" android:pathData="M140,80 L60,80 C57.8,80 56,81.8 56,84 L56,120 C56,122.2 57.8,124 60,124 L140,124 C142.2,124 144,122.2 144,120 L144,84 C144,81.8 142.2,80 140,80ZM140,108 L60,108 L60,96 L140,96 L140,108ZM140,88 L60,88 L60,84 L140,84 L140,88Z"/>
+</vector>
