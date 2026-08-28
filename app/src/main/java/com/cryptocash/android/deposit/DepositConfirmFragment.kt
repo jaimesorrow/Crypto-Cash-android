@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cryptocash.android.R
+import com.cryptocash.android.data.local.AppDatabase
+import com.cryptocash.android.data.local.TransactionEntity
 import com.cryptocash.android.databinding.FragmentDepositConfirmBinding
 import com.cryptocash.android.util.CurrencyFormatter
 import com.cryptocash.android.util.HapticHelper
+import kotlinx.coroutines.launch
+import java.util.UUID
 
 class DepositConfirmFragment : Fragment() {
 
@@ -62,7 +67,23 @@ class DepositConfirmFragment : Fragment() {
                 return@setOnClickListener
             }
             HapticHelper.performSuccess(requireContext())
-            // TODO: submit deposit via repository
+            val dao = AppDatabase.getInstance(requireContext()).transactionDao()
+            // Use the Fragment's own lifecycleScope (not viewLifecycleOwner's) so the
+            // insert isn't cancelled by the view teardown that immediately follows navigate().
+            lifecycleScope.launch {
+                dao.insert(
+                    TransactionEntity(
+                        id = UUID.randomUUID().toString(),
+                        type = "deposit",
+                        cryptoAmount = 0.0,
+                        cryptoCurrency = "USD",
+                        fiatAmount = amount,
+                        counterparty = if (isInstant) "Instant Deposit" else "ACH Transfer",
+                        timestamp = System.currentTimeMillis(),
+                        status = if (isInstant) "Confirmed" else "Pending"
+                    )
+                )
+            }
             findNavController().navigate(R.id.action_deposit_confirm_to_home)
         }
 

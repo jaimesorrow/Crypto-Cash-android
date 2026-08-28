@@ -167,4 +167,13 @@
     <string name="nav_settings">Settings</string>
     <string name="nav_notifications">Notifications</string>
 
+    <!-- Transaction history -->
+    <string name="tx_title_bought">Bought %1$s</string>
+    <string name="tx_title_sold">Sold %1$s</string>
+    <string name="tx_title_sent_to">Sent to %1$s</string>
+    <string name="tx_title_received">Received %1$s</string>
+    <string name="tx_title_deposited_cash">Deposited Cash</string>
+    <string name="tx_subtitle_network">%1$s Network</string>
+    <string name="tx_subtitle_from">from %1$s</string>
+
 </resources>
