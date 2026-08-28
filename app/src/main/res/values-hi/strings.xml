@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">क्रिप्टो कैश</string>
+    <string name="onboarding_title_1">आपका क्रिप्टो वॉलेट</string>
+    <string name="onboarding_desc_1">Bitcoin, Ethereum और अधिक खरीदें, बेचें और रखें — सब एक जगह।</string>
+    <string name="onboarding_title_2">तुरंत पैसे भेजें</string>
+    <string name="onboarding_desc_2">कुछ ही सेकंड में किसी को भी, कहीं भी क्रिप्टो या नकद भेजें।</string>
+    <string name="onboarding_title_3">बैंक-स्तरीय सुरक्षा</string>
+    <string name="onboarding_desc_3">बायोमेट्रिक प्रमाणीकरण और सुरक्षित PIN से अपना खाता सुरक्षित रखें।</string>
+    <string name="next">आगे</string>
+    <string name="skip">छोड़ें</string>
+    <string name="get_started">शुरू करें</string>
+    <string name="back">वापस</string>
+    <string name="continue_as_guest">अतिथि के रूप में जारी रखें (डेमो)</string>
+    <string name="buy">खरीदें</string>
+    <string name="sell">बेचें</string>
+    <string name="send_money">भेजें</string>
+    <string name="deposit">जमा करें</string>
+    <string name="confirm">पुष्टि करें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="save">सहेजें</string>
+    <string name="total_balance">कुल शेष</string>
+    <string name="retry">पुनः प्रयास करें</string>
+    <string name="guest_mode_banner">👋 आप डेमो मोड में हैं। सभी सुविधाओं तक पहुंचने के लिए साइन अप करें।</string>
+    <string name="pin_create_title">6-अंकीय PIN बनाएं</string>
+    <string name="pin_enter_title">अपना PIN दर्ज करें</string>
+    <string name="pin_confirm_title">अपने PIN की पुष्टि करें</string>
+    <string name="pin_mismatch">PIN मेल नहीं खाते। कृपया पुनः प्रयास करें।</string>
+    <string name="pin_incorrect">गलत PIN। कृपया पुनः प्रयास करें।</string>
+    <string name="payment_methods_title">भुगतान के तरीके</string>
+    <string name="add_bank_account">बैंक खाता जोड़ें</string>
+    <string name="add_debit_card">डेबिट कार्ड जोड़ें</string>
+    <string name="add_credit_card">क्रेडिट कार्ड जोड़ें</string>
+    <string name="kyc_title">अपनी पहचान सत्यापित करें</string>
+    <string name="nav_home">होम</string>
+    <string name="nav_history">इतिहास</string>
+    <string name="nav_wallet">वॉलेट</string>
+    <string name="nav_settings">सेटिंग्स</string>
+</resources>

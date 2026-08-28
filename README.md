@@ -1,128 +1,116 @@
-# Crypto Cash Android
+# Crypto Cash — Android
 
-Crypto Cash Android is a mobile payment application inspired by the simplicity of Cash App, focused on crypto-based money movement. The goal is a clean, intuitive Android experience for sending, receiving, and managing digital payments.
+**Send, receive, buy, and sell cryptocurrency — as easy as sending a text.**
 
-## Overview
+Crypto Cash is a mobile-first crypto wallet and payments app for Android (API 26+). It brings together the simplicity of Cash App with the power of a full crypto exchange.
 
-The app targets Android users who want a straightforward interface for crypto payments — no exchange complexity, just peer-to-peer transfers with a familiar mobile UX.
+---
 
-## Tech Stack
+## ✨ Core Features
 
-| Layer | Technology |
+| Feature | Description |
 |---|---|
-| Language | Kotlin |
-| UI | Jetpack Compose |
-| Architecture | MVVM + Repository pattern |
-| Async | Kotlin Coroutines + Flow |
-| DI | Hilt |
-| Networking | Retrofit + OkHttp |
-| Local storage | Room |
-| Build | Gradle (Kotlin DSL) |
-| Min SDK | 26 (Android 8.0) |
-| Target SDK | 34 (Android 14) |
+| **Buy Crypto** | Purchase BTC, ETH, LTC, SOL, USDC with any linked payment method. A transparent 1.75% fee is shown before you confirm. |
+| **Sell Crypto** | Convert crypto to cash, deposited to any linked bank account or card. |
+| **Send Crypto** | Send to any wallet address. Live fiat equivalent shown while typing. Confirmation screen before submitting. |
+| **Deposit Cash** | Free ACH (1–3 days) or Instant Deposit (1.5% fee) — you choose the speed. |
+| **Payment Methods** | Link **unlimited** bank accounts, debit cards, and credit cards. Set a default, add or remove at any time. |
+| **Transaction History** | Full log of buys, sells, sends, receives, and deposits. |
+| **KYC Verification** | 4-step guided identity flow to unlock higher limits. |
 
-## Planned Project Structure
+---
+
+## 💰 Monetization (No Subscription Required)
+
+- **1.75% transaction spread** on every buy/sell (embedded in price)
+- **1.5% instant deposit fee** vs free standard ACH
+- **Interchange revenue** from a future branded debit card
+- **Referral program** — users earn BTC for each referral
+- **Yield product** — earn interest on idle USDC balances
+- **Business merchant accounts** — flat-fee crypto payment acceptance
+
+---
+
+## 🛡️ Security & Privacy
+
+- Biometric authentication (fingerprint / face unlock)
+- 6-digit PIN fallback with SHA-256 hashing
+- 5-minute session timeout
+- TLS-only networking (`network_security_config.xml`)
+- No cleartext traffic allowed
+
+---
+
+## ♿ Accessibility
+
+- Full TalkBack support (content descriptions on all interactive views)
+- WCAG AA color contrast (Material 3 tokens)
+- Dynamic font size (`sp` units throughout)
+- Haptic feedback on key actions (click, success, error)
+- RTL layout support (`android:supportsRtl="true"`)
+
+---
+
+## 🌍 Localization
+
+App is fully localized in **5 languages**:
+- 🇺🇸 English (default)
+- 🇪🇸 Spanish (`values-es`)
+- 🇫🇷 French (`values-fr`)
+- 🇧🇷 Portuguese (`values-pt`)
+- 🇮🇳 Hindi (`values-hi`)
+
+---
+
+## 🏗️ Architecture
 
 ```
 app/
-├── src/main/
-│   ├── java/com/cryptocash/
-│   │   ├── data/
-│   │   │   ├── local/        # Room DAOs, entities, database
-│   │   │   ├── remote/       # API service interfaces, DTOs
-│   │   │   └── repository/   # Repository implementations
-│   │   ├── domain/
-│   │   │   ├── model/        # Core business models
-│   │   │   └── usecase/      # Business logic use cases
-│   │   ├── ui/
-│   │   │   ├── home/         # Balance dashboard screen
-│   │   │   ├── send/         # Send payment flow
-│   │   │   ├── receive/      # Receive / QR code screen
-│   │   │   ├── history/      # Transaction history
-│   │   │   └── settings/     # User settings
-│   │   └── di/               # Hilt modules
-│   └── res/
-│       ├── values/           # Strings, colors, themes
-│       └── drawable/         # Icons, vector assets
-└── build.gradle.kts
+├── onboarding/     3-screen walkthrough + guest/demo mode
+├── auth/           Biometric, PIN setup/verify, session management
+├── home/           Balance overview (crypto + fiat), MVVM
+├── buy/            Buy crypto with fee preview
+├── sell/           Sell crypto to any linked account
+├── send/           Send to wallet address with confirmation screen
+├── deposit/        Standard ACH & Instant Deposit flows
+├── payment/        Multi-account/card management (unlimited)
+├── history/        Transaction list with RecyclerView
+├── kyc/            4-step identity verification
+├── notifications/  FCM push + per-channel preferences
+├── data/
+│   ├── local/      Room database (transactions, balances)
+│   └── repository/ WalletRepository with retry/backoff
+└── util/           CurrencyFormatter, HapticHelper, NetworkHelper
 ```
 
-## Core Features (Planned)
+**Stack:** Kotlin · Material Design 3 · Navigation Component · Room · DataStore · Biometric · WorkManager · Firebase Cloud Messaging · Retrofit · Coroutines
 
-### Send Payment
-- Enter recipient address or scan QR code
-- Enter amount in crypto or fiat equivalent
-- Review and confirm transaction with fee estimate
-- Real-time status tracking after submission
+---
 
-### Receive Payment
-- Generate wallet address with QR code
-- Optional amount request with deep-link sharing
+## 🚀 Getting Started
 
-### Transaction History
-- Chronological list of sent and received transactions
-- Filter by status (pending, confirmed, failed)
-- Transaction detail view with on-chain reference
-
-### Balance Dashboard
-- Current balance in crypto and local fiat
-- Price chart (24h / 7d / 30d)
-- Quick-access send and receive buttons
-
-## Development Setup
-
-### Prerequisites
-
-- Android Studio Hedgehog (2023.1.1) or newer
-- JDK 17
-- Android SDK with API level 34 platform tools
-
-### Getting Started
+1. Clone the repo
+2. Open in Android Studio Hedgehog or later
+3. Add your `google-services.json` to `app/` (for FCM push notifications)
+4. Build & run on API 26+ device or emulator
 
 ```bash
-# Clone the repository
-git clone https://github.com/jaimesorrow/chat.git
-cd chat
-
-# Open in Android Studio and let Gradle sync complete
-# Then run on an emulator or physical device (API 26+)
+./gradlew assembleDebug
 ```
 
-### Environment Configuration
+---
 
-Create `local.properties` in the project root (not committed):
+## 📱 Supported Devices
 
-```properties
-sdk.dir=/path/to/your/Android/sdk
-API_BASE_URL=https://api.example.com
-```
+- Android 8.0+ (API 26) — covers ~95% of active Android devices
+- Phones, tablets, and foldables
+- Portrait and landscape
+- Notch / edge-to-edge displays
+- Dark mode
 
-## Architecture
+---
 
-The app follows **Clean Architecture** layered as:
+## 🤝 Contributing
 
-```
-UI (Compose screens + ViewModels)
-        ↓
-Domain (Use cases + models)
-        ↓
-Data (Repositories → Remote API + Local DB)
-```
+Contributions, suggestions, and improvements are welcome. If you plan to expand the project, keep documentation up to date as new features and setup steps are introduced.
 
-- **ViewModels** expose `StateFlow<UiState>` consumed by Compose screens.
-- **Use cases** encapsulate single business operations and are injected into ViewModels.
-- **Repositories** abstract data sources; the domain layer never imports Retrofit or Room directly.
-- **Hilt** wires dependencies at compile time with no manual DI boilerplate.
-
-## Contributing
-
-Contributions, suggestions, and improvements are welcome.
-
-- Keep documentation up to date as new features and setup steps are introduced.
-- Follow the existing architecture: new screens go in `ui/`, new business logic in `domain/usecase/`.
-- Write unit tests for use cases and repository logic; write UI tests with Compose Testing for critical flows (send, receive).
-- Use conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`.
-
-## Project Status
-
-Early stage — repository structure and documentation are being established. Source code will be added as development progresses.
