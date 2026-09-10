@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding security illustration placeholder -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+  <path android:fillColor="#7D5260" android:pathData="M100,20 C55.8,20 20,55.8 20,100 C20,144.2 55.8,180 100,180 C144.2,180 180,144.2 180,100 C180,55.8 144.2,20 100,20Z"/>
+  <path android:fillColor="#FFFFFF" android:pathData="M100,40 L60,56 L60,100 C60,124.4 77.6,147.2 100,154 C122.4,147.2 140,124.4 140,100 L140,56 Z"/>
+  <path android:fillColor="#7D5260" android:pathData="M90,105 L80,95 L74,101 L90,117 L128,79 L122,73 Z"/>
+</vector>
